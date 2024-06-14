@@ -26,20 +26,8 @@ DROP TABLE IF EXISTS `media_data`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `media_data` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `available` bit(1) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `director` varchar(255) DEFAULT NULL,
-  `duration` varchar(255) DEFAULT NULL,
-  `poster` varchar(255) DEFAULT NULL,
-  `price` float DEFAULT NULL,
-  `rating` varchar(255) DEFAULT NULL,
-  `release_year` int DEFAULT NULL,
-  `state` varchar(255) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `trailerid` varchar(255) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,8 +36,33 @@ CREATE TABLE `media_data` (
 
 LOCK TABLES `media_data` WRITE;
 /*!40000 ALTER TABLE `media_data` DISABLE KEYS */;
-INSERT INTO `media_data` VALUES (1,_binary '\0','A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.','Christopher Nolan','169 min','/Movies/4.png',0,'8.6/10',2014,NULL,'Interstellar','KPLWWIOCOOQ','movie'),(3,_binary '','Eight years after the Joker\'s reign of anarchy, Batman, with the help of the enigmatic Catwoman, is forced from his exile to save Gotham City.','Christopher Nolan','164 min','/Movies/4.png',5,'8.9/10',2012,'rent','The Dark Knight Rises','KPLWWIOCOOQ','movie'),(4,_binary '\0','The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.','Jon Favreau','169 min','/Movies/4.png',10,'8.6/10',2014,'rent','The Mandalorian','KPLWWIOCOOQ','serie'),(5,_binary '\0','A man with short-term memory loss attempts to track down his wife\'s murderer.','Christopher Nolan','113 min','/Movies/4.png',13,'8.4/10',2000,'buy','Memento','KPLWWIOCOOQ','movie');
+INSERT INTO `media_data` VALUES (3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18);
 /*!40000 ALTER TABLE `media_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `media_model_media_elements`
+--
+
+DROP TABLE IF EXISTS `media_model_media_elements`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `media_model_media_elements` (
+  `media_model_id` bigint NOT NULL,
+  `media_elements` bigint DEFAULT NULL,
+  KEY `FKsygdutumbm1o9cv2jjfj5j5y8` (`media_model_id`),
+  CONSTRAINT `FKsygdutumbm1o9cv2jjfj5j5y8` FOREIGN KEY (`media_model_id`) REFERENCES `media_data` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `media_model_media_elements`
+--
+
+LOCK TABLES `media_model_media_elements` WRITE;
+/*!40000 ALTER TABLE `media_model_media_elements` DISABLE KEYS */;
+INSERT INTO `media_model_media_elements` VALUES (17,1),(17,2),(18,1),(18,2),(18,3);
+/*!40000 ALTER TABLE `media_model_media_elements` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -61,4 +74,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-13 17:00:16
+-- Dump completed on 2024-06-14 15:46:36
